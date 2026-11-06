@@ -1,10 +1,12 @@
 # udp_server_test/server.py
 # UDP Server: รับข้อความจาก client แล้วส่งตอบกลับ (ไม่ต้องเชื่อมต่อก่อน)
 
+import os
 import socket
 
-HOST = "127.0.0.1"  # IP ของเครื่องตัวเอง
-PORT = 5001         # ใช้พอร์ตคนละอันกับ TCP
+# อ่าน IP จาก Docker (ENV HOST) ถ้าไม่มีใช้ localhost
+HOST = os.environ.get("HOST", "127.0.0.1")
+PORT = 5001  # ใช้พอร์ตคนละอันกับ TCP
 
 def main():
     # สร้าง socket แบบ UDP (SOCK_DGRAM)

@@ -1,9 +1,11 @@
 # udp_server_test/client.py
 # UDP Client: ส่งข้อความไปหา server แล้วรอรับคำตอบ
 
+import os
 import socket
 
-HOST = "127.0.0.1"
+# อ่านชื่อ server จาก Docker (ENV SERVER_HOST) ถ้าไม่มีใช้ localhost
+HOST = os.environ.get("SERVER_HOST", "127.0.0.1")
 PORT = 5001  # ต้องตรงกับพอร์ตของ server
 
 def main():

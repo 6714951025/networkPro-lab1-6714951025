@@ -1,10 +1,12 @@
 # tcp_echo_server/client.py
 # TCP Client: ส่งข้อความไปหา server แล้วรอรับข้อความที่ส่งกลับมา
 
+import os
 import socket
 
-HOST = "127.0.0.1"  # IP ของ server (เครื่องตัวเอง)
-PORT = 5000         # ต้องตรงกับพอร์ตของ server
+# อ่านชื่อ server จาก Docker (ENV SERVER_HOST) ถ้าไม่มีใช้ localhost
+HOST = os.environ.get("SERVER_HOST", "127.0.0.1")
+PORT = 5000  # ต้องตรงกับพอร์ตของ server
 
 def main():
     # สร้าง socket แบบ TCP (SOCK_STREAM)

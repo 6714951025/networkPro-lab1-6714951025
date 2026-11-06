@@ -1,0 +1,10 @@
+# ใช้ Python ขนาดเล็กเป็นฐาน
+FROM python:3.12-slim
+WORKDIR /app
+COPY server.py .
+# ให้ server รับข้อมูลจาก container อื่นได้
+ENV HOST=0.0.0.0
+# ระบุว่าเป็นพอร์ต UDP
+EXPOSE 5001/udp
+# -u ให้ print แสดงผลทันที
+CMD ["python", "-u", "server.py"]
