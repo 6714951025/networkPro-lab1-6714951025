@@ -1,9 +1,7 @@
-# ใช้ Python ขนาดเล็กเป็นฐาน
 FROM python:3.12-slim
 WORKDIR /app
-COPY server.py .
+COPY echo_server.py .
 # ให้ server รับการเชื่อมต่อจาก container อื่นได้
 ENV HOST=0.0.0.0
 EXPOSE 5000
-# -u ให้ print แสดงผลทันที
-CMD ["python", "-u", "server.py"]
+CMD ["python", "-u", "echo_server.py"]
